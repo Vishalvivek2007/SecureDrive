@@ -9,6 +9,9 @@ interface FileItem {
   SK: string;
   filename: string;
   size_bytes: number;
+  owner_sub?: string;
+  GSI1PK?: string;
+  GSI1SK?: string;
 }
 
 export default function App() {
@@ -146,6 +149,7 @@ export default function App() {
 
   const handleShare = async (fileId: string) => {
     if (!token) return;
+    setStatus('Sharing file...');
     try {
       const res = await fetch(`${API_URL}/files/${fileId}/share`, {
         method: 'POST',
@@ -153,13 +157,14 @@ export default function App() {
           Authorization: token,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ targetEmail: shareEmail, mode: 'account' })
+        body: JSON.stringify({ targetEmail: shareEmail })
       });
       const data = await res.json();
       if (res.ok) {
         setStatus(`Shared successfully with ${shareEmail}`);
         setActiveShareId(null);
         setShareEmail('');
+        fetchFiles(token);
       } else {
         setStatus(data.error || 'Sharing failed');
       }
@@ -336,10 +341,10 @@ export default function App() {
             ) : (
               <div className="divide-y divide-zinc-800/60">
                 {files.sharedWithMe.map((file) => {
-                  const fileId = file.SK.replace('FILE#', '');
-                  const ownerSub = file.PK.replace('USER#', '');
+                  const fileId = file.GSI1SK ? file.GSI1SK.replace('FILE#', '') : file.SK.replace(/.*#/, '');
+                  const ownerSub = file.owner_sub || file.PK.replace('USER#', '');
                   return (
-                    <div key={file.SK} className="p-3.5 flex items-center justify-between text-sm hover:bg-zinc-800/30">
+                    <div key={`${file.PK}-${file.SK}`} className="p-3.5 flex items-center justify-between text-sm hover:bg-zinc-800/30">
                       <div className="flex items-center gap-3">
                         <FileText size={16} className="text-zinc-400" />
                         <div>
