@@ -1,32 +1,56 @@
-# React + TypeScript + Vite
+# SecureDrive Canvas
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Redesign the existing SecureDrive frontend without changing any backend logic or integrations.
 
-Currently, two official plugins are available:
+Visual direction: **minimal artistic editorial + subtle hand-drawn comic aesthetic**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Think Google Doodle meets modern design magazine:
 
-## React Compiler
+- Warm off-white / paper backgrounds with occasional bold yellow, blue, coral or green sections
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Large, confident typography
 
-## Expanding the Oxlint configuration
+- Simple black hand-drawn line illustrations
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- Subtle paper/grid texture
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+- Flat colors, no heavy gradients
+
+- Lots of whitespace
+
+- Clean asymmetric compositions
+
+- Occasional imperfect crayon/pencil marks
+
+- One strong visual idea per section
+
+For SecureDrive, build the visual language around simple drawings of **folders, files, locks, keys and a vault**.
+
+Keep the UI extremely clean and sophisticated. Avoid dark cyberpunk styling, glassmorphism, excessive doodles, excessive cards, or childish comic styling.
+
+Add subtle, delightful animations: illustrations gently move/draw in, files slide into the vault when uploaded, buttons have tiny playful interactions, and sections transition smoothly.
+
+The result should feel like an **artistically designed interactive poster/comic**, not a conventional SaaS dashboard.
+
+**Minimal. Playful. Tactile. Beautiful.**
+
+This project was built with [Lovable](https://lovable.dev).
+
+## Build with Lovable
+
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/4cbddcbc-2cae-4a55-8935-714260aadb14).
+
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+
+```sh
+git clone <this-repository-url>
+cd <repository-name>
+npm i
+npm run dev
 ```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
