@@ -185,13 +185,17 @@
 @keyframes vault-float { 50% { transform: translateY(-7px) rotate(1.2deg); } }
 @keyframes file-slip { from { opacity: 0; transform: translateY(-14px) rotate(-2deg); } }
 @keyframes soft-enter { from { opacity: 0; transform: translateY(10px); } }
+@keyframes vault-wheel-spin { to { transform: rotate(360deg); } }
+@keyframes stat-pulse { 50% { transform: scale(1.35); opacity: 0.7; } }
 
 .vault-draw { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: draw-line 1.9s ease forwards; }
 .vault-float { animation: vault-float 5s ease-in-out infinite; }
+.vault-wheel { transform-origin: 120px 120px; animation: vault-wheel-spin 26s linear infinite; }
 .file-slip { animation: file-slip 420ms cubic-bezier(.32,.72,0,1) both; }
 .soft-enter { animation: soft-enter 500ms cubic-bezier(.32,.72,0,1) both; }
+.stat-pulse { animation: stat-pulse 2.2s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-  .vault-draw, .vault-float, .file-slip, .soft-enter { animation: none; }
+  .vault-draw, .vault-float, .vault-wheel, .file-slip, .soft-enter, .stat-pulse { animation: none; }
   .press { transition: none; }
 }
